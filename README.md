@@ -22,6 +22,67 @@ can invite _JoinLink_ and create an invite link. This link can be shared to my f
       this `docker run -itd -v $LOCAL_PATH_TO_CONFIG:/usr/src/bot/data/config.json:ro ghcr.io/dfuchss/matrixjoinlink`
     * If you want to persist sessions, you should persist the data volume `-v $LOCAL_PATH_TO_DATA:/usr/src/bot/data`
 
+## Configuration Options
+
+The `config.json` file supports the following configuration options:
+
+### Required Options
+
+| Option | Type | Description |
+|--------|------|-------------|
+| `baseUrl` | String | The base URL of the Matrix server the bot should connect to (e.g., `https://matrix-client.matrix.org`) |
+| `username` | String | The username of the bot's Matrix account |
+| `password` | String | The password of the bot's Matrix account |
+| `admins` | Array of Strings | List of Matrix user IDs that have administrative privileges (e.g., `["@admin:example.org"]`). Cannot be empty |
+| `encryptionKey` | String | A symmetric encryption key used to encrypt state events. Must not be empty. Keep this secure and don't share it |
+
+### Optional Options
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `prefix` | String | `"join"` | The command prefix the bot listens to. Commands will be in the format `!<prefix> <command>` |
+| `dataDirectory` | String | `"./data/"` | The path to the directory where the bot stores its databases and media files |
+| `users` | Array of Strings | `[]` | List of Matrix user IDs or server domains that are authorized to use the bot. Use `@user:domain` for specific users or `:domain` for entire servers. Empty array allows all users |
+
+### Configuration Examples
+
+**Minimal Configuration:**
+```json
+{
+    "baseUrl": "https://matrix-client.matrix.org",
+    "username": "joinlinkbot",
+    "password": "your-bot-password",
+    "encryptionKey": "your-secure-encryption-key-here",
+    "admins": ["@yourusername:matrix.org"]
+}
+```
+
+**Full Configuration:**
+```json
+{
+    "prefix": "joinlink",
+    "baseUrl": "https://your-matrix-server.example.org",
+    "dataDirectory": "/opt/bot/data/",
+    "username": "joinlinkbot",
+    "password": "your-bot-password",
+    "encryptionKey": "your-secure-encryption-key-here",
+    "admins": [
+        "@admin1:example.org",
+        "@admin2:example.org"
+    ],
+    "users": [
+        ":example.org",
+        "@specific-user:other-server.org"
+    ]
+}
+```
+
+**Security Notes:**
+- Keep your `encryptionKey` secure and unique
+- Use strong passwords for the bot account
+- Consider restricting `users` to specific domains or users for better security
+- The bot needs invite permissions in rooms to create join links
+
 ## Usage
 
 * A user (see user list in configuration file) can invite the bot to a room.

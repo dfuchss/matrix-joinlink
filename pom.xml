@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.fuchss</groupId>
         <artifactId>maven-parent</artifactId>
-        <version>0.22.4</version>
+        <version>0.22.5</version>
     </parent>
 
     <groupId>org.fuchss.matrix</groupId>

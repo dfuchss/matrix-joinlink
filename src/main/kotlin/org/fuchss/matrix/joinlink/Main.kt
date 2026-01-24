@@ -47,7 +47,7 @@ fun main() {
                 },
                 QuitCommand(config),
                 LogoutCommand(config),
-                ChangeUsernameCommand(),
+                ChangeUsernameCommand(config),
                 LinkCommand(config),
                 UnlinkCommand(config)
             )

@@ -2,16 +2,16 @@
 
 package org.fuchss.matrix.joinlink.handler
 
-import net.folivo.trixnity.client.room.message.text
-import net.folivo.trixnity.core.model.RoomId
-import net.folivo.trixnity.core.model.UserId
-import net.folivo.trixnity.core.model.events.ClientEvent
-import net.folivo.trixnity.core.model.events.idOrNull
-import net.folivo.trixnity.core.model.events.m.room.MemberEventContent
-import net.folivo.trixnity.core.model.events.m.room.Membership
-import net.folivo.trixnity.core.model.events.originTimestampOrNull
-import net.folivo.trixnity.core.model.events.roomIdOrNull
-import net.folivo.trixnity.core.model.events.senderOrNull
+import de.connect2x.trixnity.client.room.message.text
+import de.connect2x.trixnity.core.model.RoomId
+import de.connect2x.trixnity.core.model.UserId
+import de.connect2x.trixnity.core.model.events.ClientEvent
+import de.connect2x.trixnity.core.model.events.idOrNull
+import de.connect2x.trixnity.core.model.events.m.room.MemberEventContent
+import de.connect2x.trixnity.core.model.events.m.room.Membership
+import de.connect2x.trixnity.core.model.events.originTimestampOrNull
+import de.connect2x.trixnity.core.model.events.roomIdOrNull
+import de.connect2x.trixnity.core.model.events.senderOrNull
 import org.fuchss.matrix.bots.MatrixBot
 import org.fuchss.matrix.bots.helper.isAdminInRoom
 import org.fuchss.matrix.bots.markdown
@@ -101,7 +101,7 @@ private suspend fun handleValidJoinEvent(
     matrixBot: MatrixBot,
     config: Config
 ) {
-    val roomToJoinState = matrixBot.getStateEvent<RoomToJoinEventContent>(roomId).getOrNull() ?: return
+    val roomToJoinState = matrixBot.getStateEvent<RoomToJoinEventContent>(roomId) ?: return
     if (roomToJoinState.roomToJoin.isNullOrEmpty()) {
         return
     }
@@ -130,7 +130,6 @@ private suspend fun handleValidJoinEvent(
     val currentJoinLink =
         matrixBot
             .getStateEvent<JoinLinkEventContent>(roomToJoin)
-            .getOrNull()
             ?.joinlinkRoom
             .decrypt(config)
     if (currentJoinLink != roomId) {

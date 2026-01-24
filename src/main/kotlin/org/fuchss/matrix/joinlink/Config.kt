@@ -22,14 +22,14 @@ import java.io.File
  * @param[encryptionKey] a symmetric key that will be used to encrypt the event content for the bot
  */
 data class Config(
-    @JsonProperty override val prefix: String = "join",
-    @JsonProperty override val baseUrl: String,
-    @JsonProperty override val username: String,
-    @JsonProperty override val password: String,
-    @JsonProperty override val dataDirectory: String,
-    @JsonProperty override val admins: List<String>,
-    @JsonProperty override val users: List<String>,
-    @JsonProperty val encryptionKey: String
+    @param:JsonProperty override val prefix: String = "join",
+    @param:JsonProperty override val baseUrl: String,
+    @param:JsonProperty override val username: String,
+    @param:JsonProperty override val password: String,
+    @param:JsonProperty override val dataDirectory: String,
+    @param:JsonProperty override val admins: List<String>,
+    @param:JsonProperty override val users: List<String>,
+    @param:JsonProperty val encryptionKey: String
 ) : IConfig {
     companion object {
         private val log: Logger = LoggerFactory.getLogger(Config::class.java)

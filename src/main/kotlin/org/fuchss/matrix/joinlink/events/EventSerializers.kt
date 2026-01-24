@@ -1,13 +1,13 @@
 package org.fuchss.matrix.joinlink.events
 
-import net.folivo.trixnity.core.serialization.events.DefaultEventContentSerializerMappings
-import net.folivo.trixnity.core.serialization.events.EventContentSerializerMappings
-import net.folivo.trixnity.core.serialization.events.createEventContentSerializerMappings
-import net.folivo.trixnity.core.serialization.events.stateOf
+import de.connect2x.trixnity.core.serialization.events.EventContentSerializerMappings
+import de.connect2x.trixnity.core.serialization.events.default
+import de.connect2x.trixnity.core.serialization.events.invoke
+import de.connect2x.trixnity.core.serialization.events.stateOf
 import org.koin.dsl.module
 
 private val joinLinkSerializationMapping =
-    createEventContentSerializerMappings {
+    EventContentSerializerMappings {
         setOf(
             stateOf<JoinLinkEventContent>(JoinLinkEventContent.ID.name),
             stateOf<RoomToJoinEventContent>(RoomToJoinEventContent.ID.name)
@@ -20,6 +20,6 @@ private val joinLinkSerializationMapping =
 val joinLinkModule =
     module {
         single<EventContentSerializerMappings> {
-            DefaultEventContentSerializerMappings + joinLinkSerializationMapping
+            EventContentSerializerMappings.default + joinLinkSerializationMapping
         }
     }

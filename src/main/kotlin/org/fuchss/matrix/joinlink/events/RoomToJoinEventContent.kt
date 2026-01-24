@@ -1,9 +1,9 @@
 package org.fuchss.matrix.joinlink.events
 
+import de.connect2x.trixnity.core.model.events.EventType
+import de.connect2x.trixnity.core.model.events.StateEventContent
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import net.folivo.trixnity.core.model.events.EventType
-import net.folivo.trixnity.core.model.events.StateEventContent
 
 /**
  * The content of a room to join event (present in a JoinLinkRoom).

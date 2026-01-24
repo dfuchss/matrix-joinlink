@@ -1,11 +1,11 @@
 package org.fuchss.matrix.joinlink.handler.command
 
-import net.folivo.trixnity.client.room.message.text
-import net.folivo.trixnity.core.model.EventId
-import net.folivo.trixnity.core.model.RoomId
-import net.folivo.trixnity.core.model.UserId
-import net.folivo.trixnity.core.model.events.m.room.Membership
-import net.folivo.trixnity.core.model.events.m.room.RoomMessageEventContent
+import de.connect2x.trixnity.client.room.message.text
+import de.connect2x.trixnity.core.model.EventId
+import de.connect2x.trixnity.core.model.RoomId
+import de.connect2x.trixnity.core.model.UserId
+import de.connect2x.trixnity.core.model.events.m.room.Membership
+import de.connect2x.trixnity.core.model.events.m.room.RoomMessageEventContent
 import org.fuchss.matrix.bots.MatrixBot
 import org.fuchss.matrix.bots.command.Command
 import org.fuchss.matrix.bots.helper.canInvite
@@ -75,7 +75,6 @@ internal class UnlinkCommand(
         val currentJoinLink =
             matrixBot
                 .getStateEvent<JoinLinkEventContent>(targetRoom)
-                .getOrNull()
                 ?.joinlinkRoom
                 .decrypt(config)
 

@@ -14,9 +14,9 @@ import org.fuchss.matrix.bots.command.Command
 import org.fuchss.matrix.bots.helper.ADMIN_POWER_LEVEL
 import org.fuchss.matrix.bots.helper.canInvite
 import org.fuchss.matrix.bots.helper.canSendStateEvents
-import org.fuchss.matrix.bots.matrixTo
-import org.fuchss.matrix.bots.syntaxOfRoomId
-import org.fuchss.matrix.bots.toInternalRoomIdOrNull
+import org.fuchss.matrix.bots.helper.matrixTo
+import org.fuchss.matrix.bots.helper.syntaxOfRoomId
+import org.fuchss.matrix.bots.helper.toInternalRoomIdOrNull
 import org.fuchss.matrix.joinlink.Config
 import org.fuchss.matrix.joinlink.events.JoinLinkEventContent
 import org.fuchss.matrix.joinlink.events.RoomToJoinEventContent

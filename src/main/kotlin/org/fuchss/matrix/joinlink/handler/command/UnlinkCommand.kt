@@ -9,9 +9,10 @@ import de.connect2x.trixnity.core.model.events.m.room.RoomMessageEventContent
 import org.fuchss.matrix.bots.MatrixBot
 import org.fuchss.matrix.bots.command.Command
 import org.fuchss.matrix.bots.helper.canInvite
-import org.fuchss.matrix.bots.matrixTo
-import org.fuchss.matrix.bots.syntaxOfRoomId
-import org.fuchss.matrix.bots.toInternalRoomIdOrNull
+import org.fuchss.matrix.bots.helper.isBotAdmin
+import org.fuchss.matrix.bots.helper.matrixTo
+import org.fuchss.matrix.bots.helper.syntaxOfRoomId
+import org.fuchss.matrix.bots.helper.toInternalRoomIdOrNull
 import org.fuchss.matrix.joinlink.Config
 import org.fuchss.matrix.joinlink.events.JoinLinkEventContent
 import org.fuchss.matrix.joinlink.events.RoomToJoinEventContent
@@ -48,7 +49,7 @@ internal class UnlinkCommand(
         logger.info("Requested Unlink for $targetRoom")
 
         // Bot Admins are allowed to unlink rooms. Check permissions for non-bot-admins.
-        if (!config.isBotAdmin(sender)) {
+        if (!matrixBot.isBotAdmin(sender)) {
             // Check that the user is in the room
             if (!matrixBot
                     .roomApi()

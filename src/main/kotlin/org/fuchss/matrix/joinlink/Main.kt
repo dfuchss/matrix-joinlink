@@ -45,9 +45,9 @@ fun main() {
                 HelpCommand(config, "JoinLink") {
                     commands
                 },
-                QuitCommand(config),
-                LogoutCommand(config),
-                ChangeUsernameCommand(config),
+                QuitCommand(),
+                LogoutCommand(),
+                ChangeUsernameCommand(),
                 LinkCommand(config),
                 UnlinkCommand(config)
             )

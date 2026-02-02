@@ -1,5 +1,3 @@
-@file:OptIn(ExperimentalTime::class)
-
 package org.fuchss.matrix.joinlink.handler
 
 import de.connect2x.trixnity.client.room.message.text
@@ -14,7 +12,7 @@ import de.connect2x.trixnity.core.model.events.roomIdOrNull
 import de.connect2x.trixnity.core.model.events.senderOrNull
 import org.fuchss.matrix.bots.MatrixBot
 import org.fuchss.matrix.bots.helper.isAdminInRoom
-import org.fuchss.matrix.bots.markdown
+import org.fuchss.matrix.bots.helper.markdown
 import org.fuchss.matrix.joinlink.Config
 import org.fuchss.matrix.joinlink.events.JoinLinkEventContent
 import org.fuchss.matrix.joinlink.events.RoomToJoinEventContent
@@ -25,7 +23,6 @@ import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.Semaphore
 import kotlin.time.Clock
 import kotlin.time.Duration.Companion.seconds
-import kotlin.time.ExperimentalTime
 import kotlin.time.Instant
 
 private val recentHandledJoinEventIdToTimestamp = ConcurrentHashMap<String, Long>()
@@ -60,7 +57,7 @@ internal suspend fun handleJoinsToMatrixJoinLinkRooms(
         return
     }
 
-    if (!matrixBot.self().isAdminInRoom(matrixBot, roomId)) {
+    if (!matrixBot.isAdminInRoom(matrixBot.self(), roomId)) {
         logger.debug("Skipping MemberEvent in {} because it's not a bot's room", roomId)
         return
     }

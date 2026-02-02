@@ -11,7 +11,6 @@ import javax.crypto.spec.GCMParameterSpec
 import javax.crypto.spec.PBEKeySpec
 import javax.crypto.spec.SecretKeySpec
 import kotlin.io.encoding.Base64
-import kotlin.io.encoding.ExperimentalEncodingApi
 
 private const val ENCRYPTION_ALGORITHM = "AES"
 private const val KEY_ALGORITHM = "PBKDF2WithHmacSHA256"
@@ -25,7 +24,6 @@ fun RoomId.encrypt(config: Config): String = encryptRoomId(config, this)
 
 private val random = SecureRandom()
 
-@OptIn(ExperimentalEncodingApi::class)
 private fun encryptRoomId(
     config: Config,
     roomId: RoomId
@@ -53,7 +51,6 @@ private fun encryptRoomId(
  */
 fun String?.decrypt(config: Config): RoomId? = decryptRoomId(config, this)
 
-@OptIn(ExperimentalEncodingApi::class)
 private fun decryptRoomId(
     config: Config,
     content: String?

@@ -68,8 +68,14 @@ fun main() {
     }
 }
 
-private suspend fun getMatrixClient(config: Config): MatrixClient {
-    val existingMatrixClient = MatrixClient.create(createRepositoriesModule(config), createMediaStoreModule(config), createCryptoDriverModule()).getOrNull()
+internal suspend fun getMatrixClient(config: Config): MatrixClient {
+    val existingMatrixClient =
+        MatrixClient
+            .create(createRepositoriesModule(config), createMediaStoreModule(config), createCryptoDriverModule()) {
+                // The joinLinkModule must also be applied when restoring an existing client, otherwise the custom
+                // event types (e.g. RoomToJoinEventContent) are unknown to Trixnity after a restart.
+                modulesFactories = createTrixnityDefaultModuleFactories() + ::joinLinkModule
+            }.getOrNull()
     if (existingMatrixClient != null) {
         return existingMatrixClient
     }

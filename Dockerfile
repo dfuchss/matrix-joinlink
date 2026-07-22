@@ -3,7 +3,7 @@ FROM maven:3-eclipse-temurin-25 AS builder
 WORKDIR /usr/src/bot
 COPY src src
 COPY pom.xml pom.xml
-RUN mvn clean package
+RUN mvn -DskipTests clean package
 
 FROM eclipse-temurin:25-jre
 

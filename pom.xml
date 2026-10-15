@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.fuchss</groupId>
         <artifactId>maven-parent</artifactId>
-        <version>0.22.10</version>
+        <version>0.22.12</version>
     </parent>
 
     <groupId>org.fuchss.matrix</groupId>
@@ -34,7 +34,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <main.class>org.fuchss.matrix.joinlink.MainKt</main.class>
-        <kotlin.version>2.4.20</kotlin.version>
+        <kotlin.version>2.4.21</kotlin.version>
         <testcontainers.version>2.0.5</testcontainers.version>
     </properties>
 
@@ -54,7 +54,7 @@
         <dependency>
             <groupId>org.fuchss</groupId>
             <artifactId>matrix-bot-base</artifactId>
-            <version>0.17.2</version>
+            <version>0.18.0</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>

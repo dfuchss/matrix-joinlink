@@ -54,7 +54,7 @@
         <dependency>
             <groupId>org.fuchss</groupId>
             <artifactId>matrix-bot-base</artifactId>
-            <version>0.19.0</version>
+            <version>0.19.1</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>

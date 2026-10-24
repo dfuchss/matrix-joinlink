@@ -35,20 +35,11 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <main.class>org.fuchss.matrix.joinlink.MainKt</main.class>
         <kotlin.version>2.4.21</kotlin.version>
-        <!-- Keep in sync with matrix-bot-base; aligns kotlinx-serialization-core and -json -->
-        <serialization.version>1.12.0</serialization.version>
         <testcontainers.version>2.0.5</testcontainers.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-            <dependency>
-                <groupId>org.jetbrains.kotlinx</groupId>
-                <artifactId>kotlinx-serialization-bom</artifactId>
-                <version>${serialization.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
-            </dependency>
             <dependency>
                 <groupId>org.testcontainers</groupId>
                 <artifactId>testcontainers-bom</artifactId>

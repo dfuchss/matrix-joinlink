@@ -1,0 +1,26 @@
+name: Docker Check
+
+on:
+  pull_request:
+    types: [ opened, synchronize, reopened ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  docker:
+    uses: dfuchss/actions/.github/workflows/docker.yml@main
+    # The reusable workflow declares packages: write; nothing is pushed with push: false
+    permissions:
+      contents: read
+      packages: write
+    with:
+      image-name: matrixjoinlink
+      push: false
